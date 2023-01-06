@@ -8,6 +8,7 @@ import { Toast } from "./Toast";
 export function Shop() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+
     const { 
         toastName = '', 
         closeToast = Function.prototype,

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Image } from 'react-bootstrap-icons';
 import { CustomContext } from "../hooks/ShopContext";
 
@@ -11,11 +11,13 @@ export function Product(props) {
         rarity, 
         price, 
         priceNoDiscount,
-        btnText
     } = props;
+    
     const { 
         addProduct = Function.prototype,
     } = useContext(CustomContext);
+
+    const [ btnText, setBtnText] = useState('Add to cart');
 
     return (
         <div className="card">
@@ -43,6 +45,7 @@ export function Product(props) {
                     onClick={
                         () => {
                             addProduct({id, name, price, count: 1});
+                            setBtnText('+1');
                         }
                     }
                 >{btnText}</button>

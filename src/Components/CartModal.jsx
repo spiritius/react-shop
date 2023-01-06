@@ -3,11 +3,11 @@ import { CustomContext } from "../hooks/ShopContext";
 import { CartItem } from "./CartItem"
 
 export function CartModal(props) {
-    const { order } = props;
+    const { order = [] } = props;
+
     const { 
-        modalRef, 
         toggleCart = Function.prototype,
-        cartShow,
+        cartShow = false,
     } = useContext(CustomContext);
 
     const totalCount = order.reduce((sum, el) => sum + el.count, 0);
@@ -15,7 +15,6 @@ export function CartModal(props) {
 
     return (
         <div 
-            ref={modalRef} 
             className={cartShow ? 'd-block modal' : 'modal'}
             style={{'--bs-modal-width': '670px'}}
             >
