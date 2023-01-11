@@ -1,5 +1,3 @@
-// import { useContext, useState } from "react";
-// import { CustomContext } from "../hooks/ShopContext";
 import { Product } from "./Product";
 
 export function ProductsList(props) {

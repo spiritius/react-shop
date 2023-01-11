@@ -4,12 +4,10 @@ import { reducer } from "./reducer";
 export const CustomContext = createContext();
 
 const initState = {
-    // products: [],
     loading: true,
     order: [],
     cartShow: false,
     toastName: '',
-    btnText: 'Add to cart',
 }
 
 export const ShopContext = (props) => {
