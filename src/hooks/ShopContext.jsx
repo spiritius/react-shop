@@ -11,6 +11,8 @@ const initState = {
 }
 
 export const ShopContext = (props) => {
+    const rnd = Math.random();
+    console.log('shop context fired: ', rnd);
     const [ value, dispatch ] = useReducer(reducer, initState);
 
     // добавить в козину
@@ -35,11 +37,13 @@ export const ShopContext = (props) => {
 
     // изменение кол-ва товара в корзине
     value.changeProductCount = (productId, type) => {
+        console.log('changeProductCount fired: ', rnd);
         dispatch({
             type: 'CHANGE_PRODUCT_COUNT', 
             payload: {
                 id: productId,
-                type: type
+                type: type,
+                random: rnd
             }
         })
     }

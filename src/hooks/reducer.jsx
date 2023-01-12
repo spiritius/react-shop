@@ -1,5 +1,4 @@
 export function reducer(state, {type, payload}) {
-    // action = { type, payload }
 
     switch (type) {
         case 'ADD_PRODUCT':
@@ -40,40 +39,27 @@ export function reducer(state, {type, payload}) {
                 order: state.order.filter(item => item.id !== payload.id)
             }
         case 'CHANGE_PRODUCT_COUNT':
-            return {
-                ...state,
-                order: state.order.map(item => {
-                    if (item.id === payload.id) {
-                        if (payload.type === 'decrement' && item.count>1) {
-                            return {
-                                ...item,
-                                count: item.count--
-                            }
-                        }
-                        if (payload.type === 'increment') {
-                            return {
-                                ...item,
-                                count: item.count++
-                            }
+            let newOrderCounted = state.order.map(item => {
+                if (item.id === payload.id) {
+                    if (payload.type === 'decrement' && item.count>1) {
+                        return {
+                            ...item,
+                            count: item.count - 1
                         }
                     }
-                    return item;
-                })
+                    if (payload.type === 'increment') {
+git                        return {
+                            ...item,
+                            count: item.count + 1
+                        }
+                    }
+                }
+                return item;
+            })
+            return {
+                ...state,
+                order: newOrderCounted
             }
-        // case 'CHANGE_BTN_TEXT':
-        //     console.log(payload.id);
-        //     if (state.order.find(item => item.id === payload.id)) {
-        //         console.log('true');
-        //         return {
-        //             ...state,
-        //             btnText: '+1'
-        //         }
-        //     }
-        //     return {
-        //         ...state,
-        //         btnText: 'Add to cart'
-        //     }
-        //
         default:
             return state;
     }
