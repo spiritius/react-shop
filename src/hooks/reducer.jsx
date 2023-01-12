@@ -48,7 +48,7 @@ export function reducer(state, {type, payload}) {
                         }
                     }
                     if (payload.type === 'increment') {
-git                        return {
+                        return {
                             ...item,
                             count: item.count + 1
                         }
